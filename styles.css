@@ -1,0 +1,21 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    color: pink;
+}
+
+h2 {
+    color: green;
+}
+
+.italic-txt {
+    font-size: smaller;
+    font-style: italic;
+}
+
+header {
+    background-image: url("https://uk.pinterest.com/pin/640214903323964778/");
+}
+
+#intro {
+    background-image: url("https://i.pinimg.com/736x/07/1b/7d/071b7dd713197c0674aaa2b3a329f842.jpg");
+}
