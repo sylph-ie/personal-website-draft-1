@@ -1,6 +1,7 @@
 * {
     font-family: 'Courier New', Courier, monospace;
     color: pink;
+    background-color: black;
 }
 
 h2 {
@@ -12,8 +13,8 @@ h2 {
     font-style: italic;
 }
 
-header {
-    background-image: url("https://uk.pinterest.com/pin/640214903323964778/");
+nav {
+    background-color: pink;
 }
 
 #intro {
