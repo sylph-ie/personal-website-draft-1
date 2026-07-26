@@ -5,7 +5,7 @@
 }
 
 h2 {
-    color: green;
+    color: rgb(255, 236, 185);
 }
 
 .italic-txt {
@@ -17,6 +17,70 @@ nav {
     background-color: pink;
 }
 
+/* Homepage: */
 #intro {
+    background-color: black;
+}
+
+#intro > h1 {
+    color: rgb(251, 251, 187);
+    font-size: 2.5vw;
+    text-align: center;
+    margin: auto;
+    margin-top: 6vw;
+    margin-bottom: 6vw;
+}
+
+.portal-container {
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.portal-item {
+    flex: 1;
+    min-width: 0;
+}
+
+#lucci {
+    max-width: 20vw;
+    height: auto;
+    display: block;
+}
+
+#luccis-friend {
+    max-width: 20vw;
+    height: auto;
+    display: block;
+    /*flex-basis: 2vw; <- use this if you are not shrinking an image past what the browser deems "unsafe". More about that in #luccis-guest*/
+    transform: translateY(2vw);
+}
+
+#luccis-guest {
+    max-width: 17vw; /* keeps the global flex settings active but for this image, it caps the growth. Some browsers refuse to shrink naked <img> in flexbox below their native file dimensions unless a hard restriction (max-width) tells them its safe to do so */
+    height: auto; /*forces the image height to scale down proportionally to the new width*/
+    display: block; /* prevents browser-specific inline alignment bugs */
+    transform: translateY(2vw);
+    /*flex-basis: 1vw; <- making larger images aggressively shrink down causes the browser to apply a "safety net" bc it thinks it'll completely distort/vanish, ignoring this line */
+} /*all other elements will ignore those rules here and automatically expands to absorb the extra space luccis-guest leaves behind */
+
+
+
+
+
+
+/*Unused stuff*/
+/* min-width: forces the browser to override its default min width calculation (the browser's default layout mechanism wants to protect the content inside the flex child from shrinking past its min size*/
+
+/*.portal-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}*/
+
+/* About page:*/
+#sayhello {
     background-image: url("https://i.pinimg.com/736x/07/1b/7d/071b7dd713197c0674aaa2b3a329f842.jpg");
 }
