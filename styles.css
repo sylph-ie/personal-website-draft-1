@@ -1,20 +1,12 @@
 * {
     font-family: 'Courier New', Courier, monospace;
-    color: pink;
-    background-color: black;
-}
-
-h2 {
-    color: rgb(255, 236, 185);
+    color: black;
 }
 
 .italic-txt {
-    font-size: smaller;
+    font-size:x-small;
     font-style: italic;
-}
-
-nav {
-    background-color: pink;
+    color: pink;
 }
 
 /* Homepage: */
@@ -22,21 +14,72 @@ nav {
     background-color: black;
 }
 
-#intro > h1 {
+#setup > h1 {
     color: rgb(251, 251, 187);
-    font-size: 2.5vw;
+    font-size: 2vw;
     text-align: center;
     margin: auto;
-    margin-top: 6vw;
-    margin-bottom: 6vw;
+    margin-top: 5vw;
+    margin-bottom: 3vw;
 }
 
 .portal-container {
     display: flex;
     flex-direction: row;
-    gap: 5vw;
+    gap: 10vw;
     justify-content: center;
+    align-items: center; /* When using this, this will force all direct children to stay strictly locked to the center. If you use transform: translateY(), it will be overridden (images are trying to expand the container's boundaries simultaneously*/
+}
+
+.secret-text-intro {
+    opacity: 0;
+    display: block;
+    text-align: center;
+    margin-top: 7vw;
+    color: rgb(251, 251, 187);
+    font-size: larger;
+}
+
+.portal-card { /*To help set up the speech*/
+    position: relative;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-decoration: none;
+    margin-top: 1vw;
+}
+
+.speech {
+    opacity: 0;
+    font-size: small;
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    color: rgb(251, 251, 187);
+}
+
+#lucci-container > .speech {
+    left: .1%;
+    top: 3%
+}
+
+#friend-container > .speech {
+    left: 60%;
+    top: 5%
+}
+
+#guest-container > .speech {
+    left: 110%;
+    top: 75%
+}
+
+.portal-card:hover .speech {
+    opacity: 1;
+    display:block;
+}
+
+.portal-card:hover .secret-text-intro {
+    opacity: 1;
 }
 
 .portal-item {
@@ -44,29 +87,62 @@ nav {
     min-width: 0;
 }
 
+@keyframes lucci-wiggle {
+    0%, 100%{
+        transform: translateY(3vw) rotateZ(20deg);
+    }
+    50%{
+        transform:translateY(3vw) rotateZ(-20deg);
+    }
+}
+
+@keyframes wiggle {
+    0%, 100%{
+        transform: translateY(5vw) rotateZ(20deg);
+    }
+    50%{
+        transform:translateY(5vw) rotateZ(-20deg);
+    }
+}
+
+#lucci:hover {
+    animation-name: lucci-wiggle;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
+}
+
+#luccis-friend:hover, #luccis-guest:hover {
+    animation-name: wiggle;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
+}
+
+
+
 #lucci {
-    max-width: 20vw;
+    max-width: 15vw;
     height: auto;
-    display: block;
+    display: block; /*block elements take up the entire width of whatever they're inside of */
+    transform: translateY(3vw);
 }
 
 #luccis-friend {
-    max-width: 20vw;
+    max-width: 15vw;
     height: auto;
     display: block;
+    transform: translateY(5vw);
     /*flex-basis: 2vw; <- use this if you are not shrinking an image past what the browser deems "unsafe". More about that in #luccis-guest*/
-    transform: translateY(2vw);
 }
 
 #luccis-guest {
-    max-width: 17vw; /* keeps the global flex settings active but for this image, it caps the growth. Some browsers refuse to shrink naked <img> in flexbox below their native file dimensions unless a hard restriction (max-width) tells them its safe to do so */
+    max-width: 13vw; /* keeps the global flex settings active but for this image, it caps the growth. Some browsers refuse to shrink naked <img> in flexbox below their native file dimensions unless a hard restriction (max-width) tells them its safe to do so */
     height: auto; /*forces the image height to scale down proportionally to the new width*/
     display: block; /* prevents browser-specific inline alignment bugs */
-    transform: translateY(2vw);
+    transform: translateY(5vw);
     /*flex-basis: 1vw; <- making larger images aggressively shrink down causes the browser to apply a "safety net" bc it thinks it'll completely distort/vanish, ignoring this line */
 } /*all other elements will ignore those rules here and automatically expands to absorb the extra space luccis-guest leaves behind */
-
-
 
 
 
@@ -80,7 +156,170 @@ nav {
     object-fit: cover;
 }*/
 
+/*STANDARD ANIMATION W/ SMOOTH GLIDING (UNUSED):
+@keyframes wiggle {
+    25%{
+        transform:translateY(5vw) rotateZ(0deg);
+    }
+    50%{
+        transform: translateY(5vw) rotateZ(20deg);
+    }
+    75%{
+        transform: translateY(5vw) rotateZ(-20deg);
+    }
+    100%{
+        transform:translateY(5vw) rotateZ(0deg);
+    }
+}*/
+
 /* About page:*/
+/* 3 WAYS TO HANDLE IMAGE RESIZING:
+1) If your <div> has a defined container width, use max-width on the <img> to prevent overscaling from its native size:
+.banner {
+    width: 100px;
+    height: auto;
+}
+.banner > img {
+    max-width: 100%;
+    height: auto;
+}
+
+2) If the <div> has a strict, fixed width and height (e.g. square avatar), when <img>'s width/height = 100% = squashed image. Use object-fit to crop it cleanly without distortion:
+.banner {
+    width: 300px;
+    height: 300px;
+}
+
+.banner > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; crops the edges, acts like a background image
+
+3) If you want a full-width banner where the height naturally adjusts based on the width of the user's screen:*/
+.banner {
+    display: flex;
+    justify-content: center; /* centers horizontally*/
+    align-items: center; /* centers vertically*/
+}
+
+.banner > img {
+    width: 50vw;
+    height: 10vw;
+    object-fit: cover;
+    align-items: center;
+}
+
 #sayhello {
     background-image: url("https://i.pinimg.com/736x/07/1b/7d/071b7dd713197c0674aaa2b3a329f842.jpg");
+    background-size: cover;
+}
+
+#sayhello > h1, p {
+    background: transparent; /* if you want to make the text's padding transparent*/
+}
+
+header {
+    width: 100%;
+    padding: 0;
+}
+
+/*The container*/
+#navbar {
+    background-color: #6d5964; /*#6d5964 - more mauve purple-pink, #625356 - more brown (cool toned)*/
+    width: auto;
+ /*This is what expands the navbar for some reason*/
+    /*margin: 0;*/ /* If I don't put this for both navbar and the ul's, they leave a gap behind*/ 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*The 2nd card of the container w/c has its own set of cards*/
+#navbar > ul {
+    list-style: none; /*Gets rid of the bullet points*/
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 3vw;
+    background: transparent;
+}
+
+/*The lists. Formatting is applied to the links instead bc idk*/
+.navlinks {
+    margin-left: 3vw;
+    margin-right: 5vw;
+}
+
+.navlinks:first-child { /*idk if this does anything*/
+    margin-left: 0;
+}
+
+/*The blinking-txt*/
+#navbar p {
+    color: #f4eef5;
+    overflow: hidden;
+    font-size: 3.3rem;
+    margin: 1vw;
+    margin-left: 8vw;
+}
+
+/*The links - #navbar a does the same thing as #navbar > ul > li > a {*/
+#navbar a {
+    text-decoration: none;
+    color: #f4eef5;
+    font-weight: bold;
+    font-size: large;
+    background: none; /*Use for both the link and list items. The background was applied to both, not on the main list for some reason.*/
+
+}
+
+/*Basically the lists again but written in a diff way for some reason*/
+nav ul li { /*Another way to target the same thing*/
+  background: none;
+}
+
+/*The buttons:*/
+.cute-nav-button {
+    color: black;
+    font-size: 1.5rem;
+    cursor: grab;
+    background: #526b57;
+    padding: 0.8vw;
+    border-radius: .5vw;
+}
+
+
+#about {
+    background-color: #d5bece; /* 1) #beadb9 - gloomy pink, 2) #b4a7b8 - more gloomy purple-pink*/
+    margin:0; /*This gets rid of the border all around the website*/
+}
+
+
+#icons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 1vw;
+}
+
+.icons-card {
+    width: 4vw;
+} /*This only resizes the <a> link wrapper. SVGs can scale accordingly but not local .pngs = stays at its original large size = spills out*/
+
+.icons-card img { /*This forces both images to fit perfectly inside the 10vw icons-card boxes*/
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 1vw;
+    background: #625356;
+}
+
+footer > h4 {
+    color: #f4eef5;
+    font-size: large;
 }
