@@ -35,9 +35,22 @@
     opacity: 0;
     display: block;
     text-align: center;
-    margin-top: 7vw;
+    margin-top: 9vw;
     color: rgb(251, 251, 187);
     font-size: larger;
+}
+
+#guest-container > .secret-text-intro {
+    margin-top: 8vw;
+}
+
+#lucci-container > .secret-text-intro {
+    margin-top: 6vw;
+    margin-left: 4vw;
+}
+
+#friend-container > .secret-text-intro {
+    margin-left: 1vw;
 }
 
 .portal-card { /*To help set up the speech*/
@@ -122,22 +135,22 @@
 
 
 #lucci {
-    max-width: 15vw;
+    max-width: 11vw;
     height: auto;
     display: block; /*block elements take up the entire width of whatever they're inside of */
     transform: translateY(3vw);
 }
 
 #luccis-friend {
-    max-width: 15vw;
+    max-width: 11vw;
     height: auto;
     display: block;
-    transform: translateY(5vw);
+    transform: translateY(6vw);
     /*flex-basis: 2vw; <- use this if you are not shrinking an image past what the browser deems "unsafe". More about that in #luccis-guest*/
 }
 
 #luccis-guest {
-    max-width: 13vw; /* keeps the global flex settings active but for this image, it caps the growth. Some browsers refuse to shrink naked <img> in flexbox below their native file dimensions unless a hard restriction (max-width) tells them its safe to do so */
+    max-width: 9vw; /* keeps the global flex settings active but for this image, it caps the growth. Some browsers refuse to shrink naked <img> in flexbox below their native file dimensions unless a hard restriction (max-width) tells them its safe to do so */
     height: auto; /*forces the image height to scale down proportionally to the new width*/
     display: block; /* prevents browser-specific inline alignment bugs */
     transform: translateY(5vw);
@@ -258,36 +271,42 @@ header {
 #navbar p {
     color: #f4eef5;
     overflow: hidden;
-    font-size: 3.3rem;
+    font-size: 2.5rem; /* clamp(2.5rem, 3.3rem, 5rem)*/
     margin: 1vw;
     margin-left: 8vw;
 }
 
-/*The links - #navbar a does the same thing as #navbar > ul > li > a {*/
+/*(Obsolete after the buttons were introduced):
+The links - #navbar a does the same thing as #navbar > ul > li > a {
 #navbar a {
     text-decoration: none;
     color: #f4eef5;
     font-weight: bold;
     font-size: large;
-    background: none; /*Use for both the link and list items. The background was applied to both, not on the main list for some reason.*/
-
+    background: none; Use for both the link and list items. The background was applied to both, not on the main list for some reason.
 }
 
-/*Basically the lists again but written in a diff way for some reason*/
-nav ul li { /*Another way to target the same thing*/
+Basically the lists again but written in a diff way for some reason*/
+/*nav ul li { /*Another way to target the same thing
   background: none;
-}
+}*/
 
 /*The buttons:*/
 .cute-nav-button {
-    color: black;
+    color: #2f2324;
     font-size: 1.5rem;
+    font-weight: 700;
     cursor: grab;
-    background: #526b57;
+    background: #526b57; /*#cabac5 - more or less the same colour as the body (ethereal pink), #526b57 - light forest green, */
     padding: 0.8vw;
     border-radius: .5vw;
+    transition: 0.3ms;
 }
 
+.cute-nav-button:hover {
+    background: #a67999;
+    color:#f4eef5
+}
 
 #about {
     background-color: #d5bece; /* 1) #beadb9 - gloomy pink, 2) #b4a7b8 - more gloomy purple-pink*/
