@@ -1,0 +1,28 @@
+/*The navbar container:*/
+/*#navbar {
+    border: 2px solid black;
+    border-bottom: none;
+}*/
+
+/*(Obsolete after the buttons were introduced):
+The links - #navbar a does the same thing as #navbar > ul > li > a {
+#navbar a {
+    text-decoration: none;
+    color: #f4eef5;
+    font-weight: bold;
+    font-size: large;
+    background: none; Use for both the link and list items. The background was applied to both, not on the main list for some reason.
+}
+
+Basically the lists again but written in a diff way for some reason*/
+/*nav ul li { /*Another way to target the same thing
+  background: none;
+}*/
+
+/*.navbar-a { A way to solve buttons with links spilling over them
+    display: inline-block;
+    background-image: url("assets/images/wood texture.webp");
+    position: static;
+    top: 0;
+    left: 0;
+}*/

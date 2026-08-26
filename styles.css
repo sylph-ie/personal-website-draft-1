@@ -245,69 +245,85 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 2px solid #c9bdd7;
+    position: fixed; /*This will break the element out of its normal flow. Either apply width: 100%; or set the top, right and left to 0 so it is stretched from all sides except the bottom. Flexbox will then fill in the leftover space*/
+    top: 0;
+    right: 0;
+    left: 0;
 }
 
-/*The 2nd card of the container w/c has its own set of cards*/
+/*The 2nd card of the container, w/c will also have its own set of cards*/
 #navbar > ul {
     list-style: none; /*Gets rid of the bullet points*/
     display: flex;
     margin: 0;
     padding: 0;
+    margin-right: 3vw;
     gap: 3vw;
     background: transparent;
 }
 
-/*The lists. Formatting is applied to the links instead bc idk*/
-.navlinks {
+/*The buttons:*/
+.cute-nav-button {
+    display: inline-block;
+    background-image: url("assets/images/wood texture.webp");
+    padding: 1vw;
+    color: #c9bdd7;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+    /*background: #526b57; /*#cabac5 - more or less the same colour as the body (ethereal pink), #526b57 - light forest green, */
+    border-radius: .5vw;
     margin-left: 3vw;
-    margin-right: 5vw;
+    border: 0.3vmin solid #d5bece;
+    box-shadow: 3px 3px #201313;
+    transition: transform 90ms ease-in-out, color 30ms ease-in-out;
 }
 
-.navlinks:first-child { /*idk if this does anything*/
-    margin-left: 0;
+.cute-nav-button:hover {
+    color:#130b0b;
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px #201313;
 }
 
-/*The blinking-txt*/
+.cute-nav-button:active {
+    transform: translate(1.5px, 1.5px);
+    box-shadow: none;
+}
+
+/*The blinking-heart*/
 #navbar p {
-    color: #f4eef5;
+    color: #c9bdd7;
     overflow: hidden;
-    font-size: 2.5rem; /* clamp(2.5rem, 3.3rem, 5rem)*/
+    font-size: 2.5rem; /* clamp(2.5rem, 3.3rem, 5rem) <- consider using vw bc the text is still very big after shrinking the window*/
     margin: 1vw;
     margin-left: 8vw;
 }
 
-/*(Obsolete after the buttons were introduced):
-The links - #navbar a does the same thing as #navbar > ul > li > a {
-#navbar a {
-    text-decoration: none;
-    color: #f4eef5;
-    font-weight: bold;
-    font-size: large;
-    background: none; Use for both the link and list items. The background was applied to both, not on the main list for some reason.
+.blinking-heart {
+    color: #f4eef5; /*#c9bdd7 - light mauve pink*/
+    animation-name: heart-blinking;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    display: inline-block;
+    margin-left: 1vw;
 }
 
-Basically the lists again but written in a diff way for some reason*/
-/*nav ul li { /*Another way to target the same thing
-  background: none;
-}*/
-
-/*The buttons:*/
-.cute-nav-button {
-    color: #2f2324;
-    font-size: 1.5rem;
-    font-weight: 700;
-    cursor: grab;
-    background: #526b57; /*#cabac5 - more or less the same colour as the body (ethereal pink), #526b57 - light forest green, */
-    padding: 0.8vw;
-    border-radius: .5vw;
-    transition: 0.3ms;
+@keyframes heart-blinking {
+    0%, 100% {
+        transform: translateY(0vw);
+        opacity: 0;
+    }
+    50%{
+        transform: translateY(-1vw);
+        opacity: 1;
+    }
 }
 
-.cute-nav-button:hover {
-    background: #a67999;
-    color:#f4eef5
-}
 
+/*Section: about*/
 #about {
     background-color: #d5bece; /* 1) #beadb9 - gloomy pink, 2) #b4a7b8 - more gloomy purple-pink*/
     margin:0; /*This gets rid of the border all around the website*/
