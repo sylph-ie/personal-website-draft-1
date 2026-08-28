@@ -157,34 +157,6 @@
     /*flex-basis: 1vw; <- making larger images aggressively shrink down causes the browser to apply a "safety net" bc it thinks it'll completely distort/vanish, ignoring this line */
 } /*all other elements will ignore those rules here and automatically expands to absorb the extra space luccis-guest leaves behind */
 
-
-
-
-/*Unused stuff*/
-/* min-width: forces the browser to override its default min width calculation (the browser's default layout mechanism wants to protect the content inside the flex child from shrinking past its min size*/
-
-/*.portal-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}*/
-
-/*STANDARD ANIMATION W/ SMOOTH GLIDING (UNUSED):
-@keyframes wiggle {
-    25%{
-        transform:translateY(5vw) rotateZ(0deg);
-    }
-    50%{
-        transform: translateY(5vw) rotateZ(20deg);
-    }
-    75%{
-        transform: translateY(5vw) rotateZ(-20deg);
-    }
-    100%{
-        transform:translateY(5vw) rotateZ(0deg);
-    }
-}*/
-
 /* About page:*/
 /* 3 WAYS TO HANDLE IMAGE RESIZING:
 1) If your <div> has a defined container width, use max-width on the <img> to prevent overscaling from its native size:
@@ -245,7 +217,15 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid #c9bdd7;
+    /*border: 2px solid #c9bdd7;*/
+    /*box-shadow: 0px 0px 1px 1px #f4eef5 inset;*/
+
+    /*Nav border image*/
+    border-style: solid;
+    border-width: 35px 10px 35px 10px; /* Top: 10px, Right: 0, Bottom: 0, Left: 0 */
+    border-image-source: url("assets/images/borders/gem.webp");
+    border-image-slice: 100 fill; /* Adjust based on your image size */
+    border-image-repeat: round;
     position: fixed; /*This will break the element out of its normal flow. Either apply width: 100%; or set the top, right and left to 0 so it is stretched from all sides except the bottom. Flexbox will then fill in the leftover space*/
     top: 0;
     right: 0;
@@ -259,7 +239,7 @@ header {
     margin: 0;
     padding: 0;
     margin-right: 3vw;
-    gap: 3vw;
+    gap: 1vw;
     background: transparent;
 }
 
@@ -317,7 +297,7 @@ header {
         opacity: 0;
     }
     50%{
-        transform: translateY(-1vw);
+        transform: translateY(-0.8vw);
         opacity: 1;
     }
 }
@@ -352,6 +332,8 @@ footer {
     text-align: center;
     padding: 1vw;
     background: #625356;
+    border: 3px solid #c9bdd7;
+    box-shadow: 0px 0px 1px 1px inset #f4eef5;
 }
 
 footer > h4 {

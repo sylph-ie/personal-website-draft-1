@@ -1,3 +1,29 @@
+/*INTRO PAGE*/
+/*Unused stuff*/
+/* min-width: forces the browser to override its default min width calculation (the browser's default layout mechanism wants to protect the content inside the flex child from shrinking past its min size*/
+
+/*.portal-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}*/
+
+/*STANDARD ANIMATION W/ SMOOTH GLIDING (UNUSED):
+@keyframes wiggle {
+    25%{
+        transform:translateY(5vw) rotateZ(0deg);
+    }
+    50%{
+        transform: translateY(5vw) rotateZ(20deg);
+    }
+    75%{
+        transform: translateY(5vw) rotateZ(-20deg);
+    }
+    100%{
+        transform:translateY(5vw) rotateZ(0deg);
+    }
+}*/
+
 /*The navbar container:*/
 /*#navbar {
     border: 2px solid black;
