@@ -21,6 +21,7 @@ html {
 /* Homepage: */
 #intro {
     background-color: black;
+    overflow: hidden;
 }
 
 #setup > h1 {
@@ -35,7 +36,7 @@ html {
 .portal-container {
     display: flex;
     flex-direction: row;
-    gap: 15em;
+    gap: 20em;
     justify-content: center;
     align-items: center; /* When using this, this will force all direct children to stay strictly locked to the center. If you use transform: translateY(), it will be overridden (images are trying to expand the container's boundaries simultaneously*/
 }
@@ -51,14 +52,14 @@ html {
 
 /*The sylvanian animals*/
 #lucci {
-    max-width: 21em;
+    max-width: 17em;
     height: auto;
     display: block; /*block elements take up the entire width of whatever they're inside of */
     transform: translateY(3em);
 }
 
 #luccis-friend {
-    max-width: 21em;
+    max-width: 17em;
     height: auto;
     display: block;
     transform: translateY(9em);
@@ -66,17 +67,17 @@ html {
 }
 
 #luccis-guest {
-    max-width: 17em; /* keeps the global flex settings active but for this image, it caps the growth. Some browsers refuse to shrink naked <img> in flexbox below their native file dimensions unless a hard restriction (max-width) tells them its safe to do so */
+    max-width: 14em; /* keeps the global flex settings active but for this image, it caps the growth. Some browsers refuse to shrink naked <img> in flexbox below their native file dimensions unless a hard restriction (max-width) tells them its safe to do so */
     height: auto; /*forces the image height to scale down proportionally to the new width*/
     display: block; /* prevents browser-specific inline alignment bugs */
-    transform: translateY(7em);
+    transform: translateY(8em);
     /*flex-basis: 1vw; <- making larger images aggressively shrink down causes the browser to apply a "safety net" bc it thinks it'll completely distort/vanish, ignoring this line */
 } /*all other elements will ignore those rules here and automatically expands to absorb the extra space luccis-guest leaves behind */
 
 
 /*Little text that appear alongside the sylvanian animals*/
 .title-card {
-    opacity: 0;
+    opacity: 1;
     display:block;
     text-align: center;
     margin-top: 9em;
@@ -91,7 +92,7 @@ html {
 
 #lucci-container > .title-card {
     margin-top: 6em;
-    margin-left: 4em;
+    margin-left: 3em;
 }
 
 #friend-container > .title-card {
@@ -132,19 +133,19 @@ html {
 /*Hovering effects*/
 @keyframes lucci-wiggle {
     0%, 100%{
-        transform: translateY(3em) rotateZ(20deg);
+        transform: translateY(3em) rotateZ(15deg);
     }
     50%{
-        transform:translateY(3em) rotateZ(-20deg);
+        transform:translateY(3em) rotateZ(-15deg);
     }
 }
 
 @keyframes wiggle {
     0%, 100%{
-        transform: translateY(7em) rotateZ(20deg);
+        transform: translateY(8em) rotateZ(15deg);
     }
     50%{
-        transform:translateY(7em) rotateZ(-20deg);
+        transform:translateY(8em) rotateZ(-15deg);
     }
 }
 
@@ -167,31 +168,21 @@ html {
     opacity: 1;
 }
 
+.yellow-stars > img {
+    width: 40em;
+    position: absolute;
+}
+
+.yellow-stars-1 {
+    transform: translate(-5em, -10em) rotate(20deg)
+}
+
+.yellow-stars-2 {
+    transform: translate(155em, -15em) rotate(-1deg)
+}
+
 /**************************************************************************/
 /* About page:*/
-/* 3 WAYS TO HANDLE IMAGE RESIZING:
-1) If your <div> has a defined container width, use max-width on the <img> to prevent overscaling from its native size:
-.banner {
-    width: 100px;
-    height: auto;
-}
-.banner > img {
-    max-width: 100%;
-    height: auto;
-}
-
-2) If the <div> has a strict, fixed width and height (e.g. square avatar), when <img>'s width/height = 100% = squashed image. Use object-fit to crop it cleanly without distortion:
-.banner {
-    width: 300px;
-    height: 300px;
-}
-
-.banner > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; crops the edges, acts like a background image
-
-3) If you want a full-width banner where the height naturally adjusts based on the width of the user's screen:*/
 .banner {
     display: flex;
     justify-content: center; /* centers horizontally*/
@@ -229,6 +220,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 1.5em;
     /*border: 2px solid #c9bdd7;
     box-shadow: 0px 0px 1px 1px #f4eef5 inset;*/
     box-shadow: 0 2px 0 0 #f4eef5; 
@@ -236,10 +228,9 @@ header {
     /*Nav border image*/
     border-style: solid;
     border-width: 25px 10px 0px 10px; /* Top: 10px, Right: 0, Bottom: 0, Left: 0 */
-    border-image-source: url("assets/images/borders/grandma.webp");
-    border-image-slice: 100 fill; /* Adjust based on your image size */
+    border-image-source: url("assets/images/borders/white nav border.webp");
+    border-image-slice: 150 fill; /* Adjust based on your image size */
     border-image-repeat: round;
-    padding: 1em;
 }
 
 /*The 2nd card of the container, w/c will also have its own set of cards*/

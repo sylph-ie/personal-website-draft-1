@@ -8,6 +8,42 @@
     object-fit: cover;
 }*/
 
+/* 3 WAYS TO HANDLE IMAGE RESIZING:
+1) If your <div> has a defined container width, use max-width on the <img> to prevent overscaling from its native size:
+.banner {
+    width: 100px;
+    height: auto;
+}
+.banner > img {
+    max-width: 100%;
+    height: auto;
+}
+
+2) If the <div> has a strict, fixed width and height (e.g. square avatar), when <img>'s width/height = 100% = squashed image. Use object-fit to crop it cleanly without distortion:
+.banner {
+    width: 300px;
+    height: 300px;
+}
+
+.banner > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; crops the edges, acts like a background image
+
+3) If you want a full-width banner where the height naturally adjusts based on the width of the user's screen:
+.banner {
+    display: flex;
+    justify-content: center;  centers horizontally
+    align-items: center;  centers vertically
+}
+
+.banner > img {
+    width: 50vw;
+    height: 10vw;
+    object-fit: cover;
+    align-items: center;
+}*/
+
 /*STANDARD ANIMATION W/ SMOOTH GLIDING (UNUSED):
 @keyframes wiggle {
     25%{
