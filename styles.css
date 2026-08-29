@@ -1,3 +1,8 @@
+@font-face {
+    font-family: bigcurls;
+    src:url("fonts/Bigcurls 500.ttf");
+}
+
 html {
     font-size: 62.5%
 }
@@ -35,29 +40,6 @@ html {
     align-items: center; /* When using this, this will force all direct children to stay strictly locked to the center. If you use transform: translateY(), it will be overridden (images are trying to expand the container's boundaries simultaneously*/
 }
 
-.secret-text-intro {
-    opacity: 0;
-    display: block;
-    text-align: center;
-    margin-top: 9em;
-    color: rgb(251, 251, 187);
-    font-size: 2rem;
-}
-
-#guest-container > .secret-text-intro {
-    margin-top: 8em;
-    margin-right: 1em;
-}
-
-#lucci-container > .secret-text-intro {
-    margin-top: 6em;
-    margin-left: 4em;
-}
-
-#friend-container > .secret-text-intro {
-    margin-left: 1em;
-}
-
 .portal-card { /*To help set up the speech*/
     position: relative;
     display: flex;
@@ -67,6 +49,55 @@ html {
     margin-top: 1em;
 }
 
+/*The sylvanian animals*/
+#lucci {
+    max-width: 21em;
+    height: auto;
+    display: block; /*block elements take up the entire width of whatever they're inside of */
+    transform: translateY(3em);
+}
+
+#luccis-friend {
+    max-width: 21em;
+    height: auto;
+    display: block;
+    transform: translateY(9em);
+    /*flex-basis: 2vw; <- use this if you are not shrinking an image past what the browser deems "unsafe". More about that in #luccis-guest*/
+}
+
+#luccis-guest {
+    max-width: 17em; /* keeps the global flex settings active but for this image, it caps the growth. Some browsers refuse to shrink naked <img> in flexbox below their native file dimensions unless a hard restriction (max-width) tells them its safe to do so */
+    height: auto; /*forces the image height to scale down proportionally to the new width*/
+    display: block; /* prevents browser-specific inline alignment bugs */
+    transform: translateY(7em);
+    /*flex-basis: 1vw; <- making larger images aggressively shrink down causes the browser to apply a "safety net" bc it thinks it'll completely distort/vanish, ignoring this line */
+} /*all other elements will ignore those rules here and automatically expands to absorb the extra space luccis-guest leaves behind */
+
+
+/*Little text that appear alongside the sylvanian animals*/
+.title-card {
+    opacity: 0;
+    display:block;
+    text-align: center;
+    margin-top: 9em;
+    color: rgb(251, 251, 187);
+    font-size: 2rem;
+}
+
+#guest-container > .title-card {
+    margin-top: 8em;
+    margin-right: 1em;
+}
+
+#lucci-container > .title-card {
+    margin-top: 6em;
+    margin-left: 4em;
+}
+
+#friend-container > .title-card {
+    margin-left: 1em;
+}
+
 .speech {
     opacity: 0;
     font-size: 1.5rem;
@@ -74,8 +105,10 @@ html {
     top: 3%;
     left: 50%;
     color: rgb(251, 251, 187);
+    position: block;
 }
 
+/*Moving the speeches relative to its parent container*/
 #lucci-container > .speech {
     left: .1%;
     top: 3%
@@ -91,20 +124,12 @@ html {
     top: 75%
 }
 
-.portal-card:hover .speech {
-    opacity: 1;
-    display:block;
-}
-
-.portal-card:hover .secret-text-intro {
-    opacity: 1;
-}
-
 .portal-item {
     flex: 1;
     min-width: 0;
 }
 
+/*Hovering effects*/
 @keyframes lucci-wiggle {
     0%, 100%{
         transform: translateY(3em) rotateZ(20deg);
@@ -137,31 +162,12 @@ html {
     animation-timing-function: steps(1);
 }
 
-
-
-#lucci {
-    max-width: 21em;
-    height: auto;
-    display: block; /*block elements take up the entire width of whatever they're inside of */
-    transform: translateY(3em);
+.portal-item:hover ~ .speech,
+.portal-item:hover ~ .title-card {
+    opacity: 1;
 }
 
-#luccis-friend {
-    max-width: 21em;
-    height: auto;
-    display: block;
-    transform: translateY(9em);
-    /*flex-basis: 2vw; <- use this if you are not shrinking an image past what the browser deems "unsafe". More about that in #luccis-guest*/
-}
-
-#luccis-guest {
-    max-width: 17em; /* keeps the global flex settings active but for this image, it caps the growth. Some browsers refuse to shrink naked <img> in flexbox below their native file dimensions unless a hard restriction (max-width) tells them its safe to do so */
-    height: auto; /*forces the image height to scale down proportionally to the new width*/
-    display: block; /* prevents browser-specific inline alignment bugs */
-    transform: translateY(7em);
-    /*flex-basis: 1vw; <- making larger images aggressively shrink down causes the browser to apply a "safety net" bc it thinks it'll completely distort/vanish, ignoring this line */
-} /*all other elements will ignore those rules here and automatically expands to absorb the extra space luccis-guest leaves behind */
-
+/**************************************************************************/
 /* About page:*/
 /* 3 WAYS TO HANDLE IMAGE RESIZING:
 1) If your <div> has a defined container width, use max-width on the <img> to prevent overscaling from its native size:
@@ -225,6 +231,7 @@ header {
     justify-content: space-between;
     /*border: 2px solid #c9bdd7;
     box-shadow: 0px 0px 1px 1px #f4eef5 inset;*/
+    box-shadow: 0 2px 0 0 #f4eef5; 
 
     /*Nav border image*/
     border-style: solid;
@@ -252,9 +259,10 @@ header {
     background-image: url("assets/images/wood texture.webp");
     padding: 1em;
     color: #c9bdd7;
-    font-size: 2rem;
+    font-family: bigcurls;
+    font-size: 2.5rem;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 400;
     cursor: pointer;
     /*background: #526b57; /*#cabac5 - more or less the same colour as the body (ethereal pink), #526b57 - light forest green, */
     border-radius: .5em;
@@ -275,13 +283,14 @@ header {
     box-shadow: none;
 }
 
-/*The blinking-heart*/
+/*The navbat*/
 #navbar p {
     color: #c9bdd7;
     /*overflow: hidden; this did not do anything but apparently this prevents sticky navbars from working*/ 
     font-size: 4rem; /* clamp(2.5rem, 3.3rem, 5rem) <- consider using vw bc the text is still very big after shrinking the window*/
     margin: .3em;
     margin-left: 2em;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .blinking-heart {
@@ -312,6 +321,14 @@ header {
     margin:0; /*This gets rid of the border all around the website*/
 }
 
+main {
+    padding: 2em;
+}
+
+h2 {
+    font-family: bigcurls;
+    font-size: 3rem;
+}
 
 #icons-container {
     display: flex;
