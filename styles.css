@@ -1,6 +1,26 @@
 @font-face {
-    font-family: bigcurls;
-    src:url("fonts/Bigcurls 500.ttf");
+    font-family: "bigurls";
+    src:url("assets/fonts/Bigcurls 500.ttf");
+}
+
+@font-face {
+    font-family: "flowerpot";
+    src: url("assets/fonts/Flowerpot Regular.ttf")
+}
+
+@font-face {
+    font-family: "buttonz";
+    src: url("assets/fonts/Buttons.ttf");
+}
+
+@font-face {
+    font-family: northwest;
+    src: url("assets/fonts/Pacific Northwest Rough.ttf");
+}
+
+@font-face {
+    font-family: antiqua;
+    src: url("assets/fonts/GlassAntiqua-Regular.ttf");
 }
 
 html {
@@ -77,7 +97,7 @@ html {
 
 /*Little text that appear alongside the sylvanian animals*/
 .title-card {
-    opacity: 1;
+    opacity: 0;
     display:block;
     text-align: center;
     margin-top: 9em;
@@ -329,32 +349,11 @@ html {
 
 /**************************************************************************/
 /* About page:*/
-.banner {
-    display: flex;
-    justify-content: center; /* centers horizontally*/
-    align-items: center; /* centers vertically*/
-}
-
-.banner > img {
-    width: 50vw;
-    height: 10vw;
-    object-fit: cover;
-    align-items: center;
-}
-
-#sayhello {
-    background-image: url("https://i.pinimg.com/736x/07/1b/7d/071b7dd713197c0674aaa2b3a329f842.jpg");
-    background-size: cover;
-}
-
-#sayhello > h1, p {
-    background: transparent; /* if you want to make the text's padding transparent*/
-}
-
 header {
     position: sticky;
     top: 0; /* if I don't put this here, the prev property won't work*/
     /* if the width of the navbar is smaller than the viewport, set width: 100% */
+    z-index: 999; /*Certain headings seems to go over the nav unless i set this*/
 }
 
 /*The container*/
@@ -369,7 +368,7 @@ header {
     padding: 1.5em;
     /*border: 2px solid #c9bdd7;
     box-shadow: 0px 0px 1px 1px #f4eef5 inset;*/
-    box-shadow: 0 2px 0 0 #f4eef5; 
+    box-shadow: 0 2px 0 0 #dec9ff; 
 
     /*Nav border image*/
     border-style: solid;
@@ -394,10 +393,10 @@ header {
 .cute-nav-button {
     display: inline-block;
     background-image: url("assets/images/wood texture.webp");
-    padding: 1em;
+    padding: .5em;
     color: #c9bdd7;
-    font-family: bigcurls;
-    font-size: 2.5rem;
+    font-family: buttonz;
+    font-size: 3rem;
     text-decoration: none;
     font-weight: 400;
     cursor: pointer;
@@ -446,25 +445,107 @@ header {
         opacity: 0;
     }
     50%{
-        transform: translateY(-.2em);
+        transform: translateY(-.4em);
         opacity: 1;
     }
 }
 
 
 /*Section: about*/
-#about {
-    background-color: #beadb9; /* 1) #beadb9 - gloomy pink, 2) #b4a7b8 - more gloomy purple-pink 3) d5bece - lighter pink*/
-    margin:0; /*This gets rid of the border all around the website*/
-}
-
 main {
-    padding: 2em;
+    padding: 1em;
+    padding-right: 22em;
+    padding-left: 22em;
 }
 
 h2 {
-    font-family: bigcurls;
+    font-family: bigurls;
+    text-align: center;
+    font-size: 4rem;
+    margin: .5em;
+}
+
+p {
+    font-family: antiqua;
+    margin: 0;
+    padding: 0;
+}
+
+.log-font {
+    text-align: center;
+    font-family: antiqua, 'Courier New', Courier, monospace;
+    font-size: 2.5rem;
+}
+
+.log-font > li {
+    text-align: center;
+    font-family: antiqua, 'Courier New', Courier, monospace;
+    font-size: 2.5rem;
+    list-style-position: inside;
+}
+
+@keyframes big-welcome {
+    0%, 100% {
+        transform: rotate(1deg)
+    }
+
+    50% {
+        transform: rotate(-1deg);
+    }
+}
+
+.welcome-heading {
+    text-align: center;
+    font-family: bigurls, monospace;
+    font-weight: 400;
+    font-size: 5rem;
+    margin: .1em;
+    animation-name: big-welcome;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
+    cursor: default;
+}
+
+.whatsthis-heading {
+    text-align: center;
+    font-family: antiqua, monospace;
+    font-weight: 400;
     font-size: 3rem;
+}
+
+.banner {
+    display: flex;
+    justify-content: center; /* centers horizontally*/
+    align-items: center; /* centers vertically*/
+}
+
+.banner > img {
+    width: 80vw;
+    height: 10vw;
+    object-fit: cover;
+    align-items: center;
+}
+
+#sayhello {
+    background-image: url("assets/images/trees.webp");
+    background-size: auto;
+    height: 10em;
+}
+
+#sayhello > h1, p {
+    background: transparent; /* if you want to make the text's padding transparent*/
+}
+
+.mr-rogers {
+    display: flex;
+    justify-content: center;
+    margin: 2em;
+}
+
+#about {
+    background-color: #beadb9; /* 1) #beadb9 - gloomy pink, 2) #b4a7b8 - more gloomy purple-pink 3) d5bece - lighter pink*/
+    margin:0; /*This gets rid of the border all around the website*/
 }
 
 #icons-container {
@@ -495,5 +576,6 @@ footer {
 
 footer > h4 {
     color: #f4eef5;
-    font-size: large;
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
 }
