@@ -112,7 +112,7 @@ html {
 /*Moving the speeches relative to its parent container*/
 #lucci-container > .speech {
     left: .1%;
-    top: 3%
+    top: 1%
 }
 
 #friend-container > .speech {
@@ -133,24 +133,134 @@ html {
 /*Hovering effects*/
 @keyframes lucci-wiggle {
     0%, 100%{
-        transform: translateY(3em) rotateZ(15deg);
+        transform: translateY(3em) rotateZ(10deg);
     }
     50%{
-        transform:translateY(3em) rotateZ(-15deg);
+        transform:translateY(3em) rotateZ(-10deg);
     }
 }
 
 @keyframes wiggle {
     0%, 100%{
-        transform: translateY(8em) rotateZ(15deg);
+        transform: translateY(8em) rotateZ(10deg);
     }
     50%{
-        transform:translateY(8em) rotateZ(-15deg);
+        transform:translateY(8em) rotateZ(-10deg);
+    }
+}
+
+.crown-webp > img {
+    position: absolute;
+    width: 3em;
+    transform: translate(8em, -33em) rotate(60deg);
+    opacity: 0;
+}
+
+.excited-webp > img {
+    position: absolute;
+    width: 5em;
+    transform: translate(-11em, -27em) rotate(-25deg);
+    opacity: 0;
+}
+
+.butterfly-webp img {
+    position: absolute;
+    max-width: 3em;
+    transform: translate(-10em, -35em);
+    opacity: 0;
+}
+
+.caterpillar-webp img {
+    position: absolute;
+    max-width: 5em;
+    transform: translate(9em, -15em) rotate(30deg);
+    opacity: 0;
+}
+
+.mushroom-webp img {
+    position: absolute;
+    max-width: 3em;
+    transform: translate(-11em, -22em);
+    opacity: 0;
+}
+
+.bee-webp img {
+    position: absolute;
+    max-width: 3em;
+    transform: translate(8em, -30em);
+    opacity: 0;
+}
+
+@keyframes crown {
+    0%, 100%{
+        transform: rotate(-.5deg);
+    }
+    50% {
+        transform: rotate(.5deg);
+    }
+}
+
+@keyframes excited {
+    0%, 100%{
+        transform: rotate(.5deg);
+    }
+    50% {
+        transform: rotate(-.5deg);
+    }
+}
+
+@keyframes butterfly {
+    0%, 100%{
+        transform: rotate(-.5deg);
+    }
+    50% {
+        transform: rotate(.5deg);
+    }
+}
+
+@keyframes caterpillar {
+    0%, 100%{
+        transform: rotate(.5deg);
+    }
+    50% {
+        transform: rotate(-.5deg);
+    }
+}
+
+@keyframes mushroom {
+    0%, 100%{
+        transform: rotate(-.5deg);
+    }
+    50% {
+        transform: rotate(.5deg);
+    }
+}
+
+@keyframes bee {
+    0%, 100%{
+        transform: rotate(.5deg);
+    }
+    50% {
+        transform: rotate(-.5deg);
     }
 }
 
 #lucci:hover {
     animation-name: lucci-wiggle;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
+}
+
+#lucci:hover ~ .crown-webp{
+    animation-name: crown;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
+}
+
+#lucci:hover ~ .excited-webp {
+    animation-name: excited;
     animation-duration: 500ms;
     animation-iteration-count: infinite;
     animation-timing-function: steps(1);
@@ -163,8 +273,44 @@ html {
     animation-timing-function: steps(1);
 }
 
+
+#luccis-friend:hover ~ .butterfly-webp{
+    animation-name: butterfly;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
+}
+
+
+#luccis-friend:hover ~ .caterpillar-webp{
+    animation-name: caterpillar;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
+}
+
+#luccis-guest:hover ~ .mushroom-webp{
+    animation-name: mushroom;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
+}
+
+#luccis-guest:hover ~ .bee-webp{
+    animation-name: bee;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
+}
+
 .portal-item:hover ~ .speech,
-.portal-item:hover ~ .title-card {
+.portal-item:hover ~ .title-card,
+.portal-item:hover ~ .crown-webp img,
+.portal-item:hover ~ .excited-webp img,
+.portal-item:hover ~ .butterfly-webp img,
+.portal-item:hover ~ .caterpillar-webp img,
+.portal-item:hover ~ .mushroom-webp img,
+.portal-item:hover ~ .bee-webp img {
     opacity: 1;
 }
 
@@ -178,7 +324,7 @@ html {
 }
 
 .yellow-stars-2 {
-    transform: translate(155em, -15em) rotate(-1deg)
+    transform: translate(160em, -5em) rotate(-1deg)
 }
 
 /**************************************************************************/
