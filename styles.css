@@ -24,7 +24,7 @@
 }
 
 html {
-    font-size: 62.5%
+    font-size: 62.5% /*To make resizing fonts in rem easier*/
 }
 
 * {
@@ -335,22 +335,22 @@ html {
 }
 
 .yellow-stars > img {
-    width: 40em;
+    width: 30em;
     position: absolute;
 }
 
 .yellow-stars-1 {
-    transform: translate(-5em, -10em) rotate(20deg)
+    transform: translate(-25em, -10em) rotate(20deg) /*translate(-5em, -10em) rotate(20deg)*/
 }
 
 .yellow-stars-2 {
-    transform: translate(160em, -5em) rotate(-1deg)
+    transform: translate(85em, -10em) rotate(-1deg) /*translate(160em, -5em) rotate(-1deg)*/
 }
 
 /**************************************************************************/
 /* About page:*/
 header {
-    position: sticky;
+    position: sticky; /*If it includes a navbar, good practice to apply position to the header instead*/
     top: 0; /* if I don't put this here, the prev property won't work*/
     /* if the width of the navbar is smaller than the viewport, set width: 100% */
     z-index: 999; /*Certain headings seems to go over the nav unless i set this*/
@@ -368,13 +368,13 @@ header {
     padding: 1.5em;
     /*border: 2px solid #c9bdd7;
     box-shadow: 0px 0px 1px 1px #f4eef5 inset;*/
-    box-shadow: 0 2px 0 0 #dec9ff; 
+    box-shadow: 0 2px 0 0 #c9bdd7; /*#69538c*/
 
     /*Nav border image*/
     border-style: solid;
     border-width: 25px 10px 0px 10px; /* Top: 10px, Right: 0, Bottom: 0, Left: 0 */
-    border-image-source: url("assets/images/borders/white nav border.webp");
-    border-image-slice: 150 fill; /* Adjust based on your image size */
+    border-image-source: url("assets/images/borders/black lace border.webp");
+    border-image-slice: 50 fill; /* Adjust based on your image size */
     border-image-repeat: round;
 }
 
@@ -409,7 +409,7 @@ header {
 }
 
 .cute-nav-button:hover {
-    color:#130b0b;
+    color:#6d5964;
     transform: translate(1px, 1px);
     box-shadow: 2px 2px #201313;
 }
@@ -435,7 +435,7 @@ header {
     animation-duration: 2000ms;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    display: inline-block;
+    display: inline-block; /*This allows the navbat to be aligned w the buttons and its heart*/
     margin-left: .5em;
 }
 
@@ -452,6 +452,102 @@ header {
 
 
 /*Section: about*/
+.stickers {
+    position: absolute;
+    width: 10em;
+    top: 50%;
+}
+
+#fleur {
+    top: 45em;
+    left: 111em;
+    transform: rotateZ(-20deg);
+}
+
+#swirly_star {
+    top: 20em;
+    left: 110em;
+    transform: rotateZ(20deg);
+    width: 7em;
+}
+
+#silver_key {
+    top: 58em;
+    left: 5em;
+    width: 7em;
+    transform: rotateZ(-20deg);
+}
+
+#silver_star {
+    top: 80em;
+    left: 8em;
+    width: 6em;
+}
+
+#locket {
+    top: 70em;
+    left: 108em;
+    width: 10em;
+}
+
+#fairies_sign {
+    top: 35em;
+    left: 4em;
+    transform: rotateZ(-10deg);
+    width: 13em;
+}
+
+#twins {
+    top: 100em;
+    left: 3em;
+    transform: rotateZ(-10deg);
+    width: 13em;
+}
+
+#rilakkuma {
+    top: 116em;
+    left: 110em;
+    width: 10em;
+}
+
+#chs {
+    top: 118em;
+    left: 23em;
+    width: 7em;
+    transform: rotateZ(-10deg);
+}
+
+#envelope {
+    top:145em;
+    left: 7em;
+}
+
+#flying_stars {
+    top: 193em;
+    left: 107em;
+    width: 9em;
+}
+
+#eat_me {
+    top: 125em;
+    left: 93em;
+    width: 7em;
+}
+
+#c_bunny {
+    top: 160em;
+    left: 110em;
+    width: 7em;
+    transform: rotateZ(-10deg);
+}
+
+#petit {
+    top: 170em;
+    left: 8em;
+    width: 12em;
+
+}
+
 main {
     padding: 1em;
     padding-right: 22em;
@@ -462,7 +558,16 @@ h2 {
     font-family: bigurls;
     text-align: center;
     font-size: 4rem;
+    margin-top:.5em;
+}
+
+.white-h2 {
+    font-family: bigurls;
+    text-align: center;
+    font-size: 4rem;
     margin: .5em;
+    margin-top: 1em;
+    color:#f4eef5
 }
 
 p {
@@ -471,17 +576,21 @@ p {
     padding: 0;
 }
 
-.log-font {
+.bold-txt-fav {
+    font-family: antiqua;
+    font-weight: bold;
+    color: #000000;
+    margin: .5em;
+}
+
+.log-font { /*Applied to the main p's but not applied globally to lists for some reason*/
     text-align: center;
     font-family: antiqua, 'Courier New', Courier, monospace;
     font-size: 2.5rem;
 }
 
-.log-font > li {
-    text-align: center;
-    font-family: antiqua, 'Courier New', Courier, monospace;
-    font-size: 2.5rem;
-    list-style-position: inside;
+.fav-list-card > .log-font {
+    margin-top: .3em;
 }
 
 @keyframes big-welcome {
@@ -499,7 +608,7 @@ p {
     font-family: bigurls, monospace;
     font-weight: 400;
     font-size: 5rem;
-    margin: .1em;
+    margin: .5em;
     animation-name: big-welcome;
     animation-duration: 500ms;
     animation-iteration-count: infinite;
@@ -512,6 +621,7 @@ p {
     font-family: antiqua, monospace;
     font-weight: 400;
     font-size: 3rem;
+    margin-bottom: 1em;
 }
 
 .banner {
@@ -522,32 +632,185 @@ p {
 
 .banner > img {
     width: 80vw;
-    height: 10vw;
+    max-height: 10em;
     object-fit: cover;
     align-items: center;
 }
 
-#sayhello {
+.marquee {
+    --fade-amount: 15%; /*A token*/
     background-image: url("assets/images/trees.webp");
+    mask-image: linear-gradient(to right, transparent, black var(--fade-amount), black calc(100% - var(--fade-amount)), transparent); /*black = mask fully applied to element. (https://www.youtube.com/watch?v=Ca8L8iqnmdw&t=266s)*/
     background-size: auto;
-    height: 10em;
+    height: 4em;
+    margin-top: 3em;
+    display: flex;
+    overflow: hidden;
+    display: flex;
+    gap: 3rem;
+    position: relative;
+    user-select: none; /*Prevents users from getting images highlighted after double-clicking*/
+    padding: 2rem;
 }
 
-#sayhello > h1, p {
-    background: transparent; /* if you want to make the text's padding transparent*/
+.marquee-content {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-around;
+    min-width: 100%; /*Allow the imgs to take up the entire width of the marquee*/
+    gap: 3rem;
+}
+
+@keyframes scroll {
+    from {
+        transform: translate(0);
+    }
+    to {
+        transform: translateX(calc(-100% - 3rem)); /*The rem here has to match with the gap set for its container*/
+    }
+}
+
+.scroll {
+    animation: scroll 15000ms linear infinite;
 }
 
 .mr-rogers {
     display: flex;
     justify-content: center;
     margin: 2em;
+    max-width: 100%;
 }
 
-#about {
+.mr-rogers > img {
+    max-width: 45em;
+}
+
+#page-about {
     background-color: #beadb9; /* 1) #beadb9 - gloomy pink, 2) #b4a7b8 - more gloomy purple-pink 3) d5bece - lighter pink*/
     margin:0; /*This gets rid of the border all around the website*/
 }
 
+.profile > p,
+.profile > h2 {
+    color: #f4eef5;
+}
+
+.fav-list-container > div > p {
+    color: black;
+}
+
+#about {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    position: relative;
+    z-index: 10;
+}
+
+.framez {
+    position: relative;
+    display: inline-block;
+    width: 90em;
+    height: 60em;
+    right: 5em;
+    margin-bottom: 2em;
+}
+
+#extra-txt {
+    color:#000000;
+}
+
+.main-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex; /*4) Readjust the size so it centers nicely inside the framez-pink box*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:3em; /*5) Padding to prevent the text from touching the frame edges*/
+    box-sizing: border-box;
+}
+
+/******************************************************************/
+/*Favs container*/
+#favs {
+    margin: 0;
+    margin-top: 6em;
+    margin-bottom: 5em;
+    z-index: 4;
+}
+
+.fav-list-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+    justify-content: center;
+    align-content: space-evenly;
+    
+}
+
+.fav-list-card {
+    position: relative; /*1) Make the main card the boundary box/anchor point for the absolute content*/
+    display: inline-block;
+}
+
+.framez-pink {
+    display: block;
+    width: 100%; /*2) Make the frame stretch to fit the container's width*/
+    height: 11.5em;
+}
+
+.card-content { /*3) Anything that goes inside the framez-pink is layered exactly over the frame*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex; /*4) Readjust the size so it centers nicely inside the framez-pink box*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top:.8em; /*5) Padding to prevent the text from touching the frame edges*/
+    box-sizing: border-box;
+}
+
+.list-img { /*6) Adjust the little image*/
+    max-width: 65%; /*Make sure it shrinks correct inside the frame*/
+    object-fit: cover;
+    object-position: 50% 30%;
+    border-radius: 2em;
+    height: 6em;
+    width: 15em;
+    transition: opacity 200ms ease;
+}
+
+a:hover .list-img {
+    opacity: 50%;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover .log-font-fav {
+    text-decoration: underline;
+    color:#8a2660;
+}
+
+.list-img-4 {
+    object-position: 50% 52%;
+}
+
+.log-font { /*Applied to the main p's but not applied globally to lists for some reason*/
+    text-align: center;
+    font-family: antiqua, 'Courier New', Courier, monospace;
+    font-size: 2.5rem;
+    color:#f4eef5;
+}
+
+/**********************************************************************/
+/*Footer*/
 #icons-container {
     display: flex;
     align-items: center;
@@ -568,14 +831,48 @@ p {
 
 footer {
     text-align: center;
-    padding: 1em;
+    padding: 2em;
+    padding-bottom: 2.5em;
     background: #625356;
     border: 3px solid #c9bdd7;
     box-shadow: 0px 0px 1px 1px inset #f4eef5;
+    position: relative;
+    overflow: hidden;
 }
 
 footer > h4 {
     color: #f4eef5;
     font-size: 2rem;
     font-family: 'Courier New', Courier, monospace;
+}
+
+#lola {
+    width: 18em;
+    top: -9em;
+    left: 95em;
+}
+
+#swing_cat {
+    width: 14em;
+    top: -15em;
+    left: 15em;
+    animation-name: swing;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    transform-origin: top center;
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(50deg);
+    }
+
+    50% {
+        transform: rotate(-15deg);
+    }
+
+    100% {
+        transform:rotate(50deg);
+    }
 }
