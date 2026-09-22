@@ -1,0 +1,266 @@
+/*Fonts*/
+@font-face {
+    font-family: "bigurls";
+    src:url("assets/fonts/Bigcurls 500.ttf");
+}
+
+@font-face {
+    font-family: "buttonz";
+    src: url("assets/fonts/Buttons.ttf");
+}
+
+@font-face {
+    font-family: antiqua;
+    src: url("assets/fonts/GlassAntiqua-Regular.ttf");
+}
+
+/**************************/
+/*Global*/
+html {
+    font-size: 62.5%; /*To make resizing fonts in rem easier*/
+    height: 100%;
+}
+
+* {
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+}
+
+body {
+    background-color: #beadb9;
+    margin: 0;
+}
+
+header {
+    position: sticky; /*If it includes a navbar, good practice to apply position to the header instead*/
+    top: 0; /* if I don't put this here, the prev property won't work*/
+    /* if the width of the navbar is smaller than the viewport, set width: 100% */
+    z-index: 999; /*Certain headings seems to go over the nav unless i set this*/
+}
+
+/*The container*/
+#navbar {
+    background-color: #6d5964; /*#6d5964 - more mauve purple-pink, #625356 - more brown (cool toned)*/
+    width: auto;
+ /*This is what expands the navbar for some reason*/
+    /*margin: 0;*/ /* If I don't put this for both navbar and the ul's, they leave a gap behind*/ 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5em;
+    /*border: 2px solid #c9bdd7;
+    box-shadow: 0px 0px 1px 1px #f4eef5 inset;*/
+    box-shadow: 0 2px 0 0 #c9bdd7; /*#69538c*/
+
+    /*Nav border image*/
+    border-style: solid;
+    border-width: 25px 10px 0px 10px; /* Top: 10px, Right: 0, Bottom: 0, Left: 0 */
+    border-image-source: url("assets/images/borders/black lace border.webp");
+    border-image-slice: 50 fill; /* Adjust based on your image size */
+    border-image-repeat: round;
+}
+
+/*The 2nd card of the container, w/c will also have its own set of cards*/
+#navbar > ul {
+    list-style: none; /*Gets rid of the bullet points*/
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-right: 3em;
+    gap: 1.5em;
+    background: transparent;
+}
+
+/*The buttons:*/
+.cute-nav-button {
+    display: inline-block;
+    background-image: url("assets/images/wood texture.webp");
+    padding: .5em;
+    color: #c9bdd7;
+    font-family: buttonz;
+    font-size: 3rem;
+    text-decoration: none;
+    font-weight: 400;
+    cursor: pointer;
+    /*background: #526b57; /*#cabac5 - more or less the same colour as the body (ethereal pink), #526b57 - light forest green, */
+    border-radius: .5em;
+    margin-left: 3em;
+    border: 0.3vmin solid #d5bece;
+    box-shadow: 3px 3px #201313;
+    transition: transform 90ms ease-in-out, color 30ms ease-in-out;
+}
+
+.cute-nav-button:hover {
+    color:#6d5964;
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px #201313;
+}
+
+.cute-nav-button:active {
+    transform: translate(1.5px, 1.5px);
+    box-shadow: none;
+}
+
+/*The navbat*/
+#navbar p {
+    color: #c9bdd7;
+    /*overflow: hidden; this did not do anything but apparently this prevents sticky navbars from working*/ 
+    font-size: 4rem; /* clamp(2.5rem, 3.3rem, 5rem) <- consider using vw bc the text is still very big after shrinking the window*/
+    margin: .3em;
+    margin-left: 2em;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.blinking-heart {
+    color: #f4eef5; /*#c9bdd7 - light mauve pink*/
+    animation-name: heart-blinking;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    display: inline-block; /*This allows the navbat to be aligned w the buttons and its heart*/
+    margin-left: .5em;
+}
+
+@keyframes heart-blinking {
+    0%, 100% {
+        transform: translateY(0em);
+        opacity: 0;
+    }
+    50%{
+        transform: translateY(-.4em);
+        opacity: 1;
+    }
+}
+
+/*.grid-container {
+    display: grid;
+    place-content: center; /*Using this rather than align/justify bc if i do then each element will have its own row and be centered
+    min-height: 100vh;
+    margin: 0;
+    gap: 0.1em;
+    max-width: 600px; /*Replaced the padding-left/right: 30em bc massive padding breaks layout on smaller screens
+    margin-inline: auto;
+    padding: 1em;
+}
+*/
+
+.grid-container {
+    display: grid;
+    /* 1. Stacks the elements together and centers the whole block in the dead-center */
+    place-content: center; 
+    min-height: 30em;
+    margin: 0;
+    /* 2. Sets a controlled, small gap between the two <h2> headings */
+    gap: 0.5em; 
+    /* 3. Replaces the massive padding with a safe width constraint */
+    max-width: 600px;
+    margin-inline: auto; /* Centers the container container itself horizontally */
+    padding: 1em;
+}
+
+.whatsthis-heading-alt {
+    margin: 0;
+    gap: 1.5em;
+    height: 100%;
+    font-family: antiqua, monospace;
+    font-weight: 600;
+    font-size: 3rem;
+    text-align: center;
+}
+
+p {
+    font-family: antiqua;
+    margin: 0;
+    padding: 0;
+}
+
+/****************************************************************/
+/*Projects*/
+.stickers {
+    position: absolute;
+    width: 10em;
+}
+
+#center-image {
+    width: 7em;
+    top: 15em;
+    left: 14em;
+}
+
+#garden-sign {
+    top: 32em;
+    left: 100em;
+    width: 18em;
+}
+
+/**********************************************************************/
+/*Footer*/
+#icons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    margin: 1em;
+}
+
+.icons-card {
+    width: 4em;
+} /*This only resizes the <a> link wrapper. SVGs can scale accordingly but not local .pngs = stays at its original large size = spills out*/
+
+.icons-card img { /*This forces both images to fit perfectly inside the 10vw icons-card boxes*/
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 2em;
+    padding-bottom: 2.5em;
+    background: #625356;
+    border: 3px solid #c9bdd7;
+    box-shadow: 0px 0px 1px 1px inset #f4eef5;
+    position: relative;
+    overflow: hidden;
+}
+
+/*footer *:last-child {
+  margin-bottom: 0;
+}*/
+
+footer > h4 {
+    color: #f4eef5;
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#lola {
+    width: 18em;
+    top: 2em;
+    left: 95em;
+}
+
+#swing_cat {
+    width: 14em;
+    top: -5em;
+    left: 15em;
+    animation-name: swing;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    transform-origin: top center;
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(50deg);
+    }
+
+    50% {
+        transform: rotate(-15deg);
+    }
+
+    100% {
+        transform:rotate(50deg);
+    }
+}

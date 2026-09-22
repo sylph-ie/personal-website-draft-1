@@ -685,9 +685,9 @@ p {
     max-width: 45em;
 }
 
-#page-about {
+.page-about {
     background-color: #beadb9; /* 1) #beadb9 - gloomy pink, 2) #b4a7b8 - more gloomy purple-pink 3) d5bece - lighter pink*/
-    margin:0; /*This gets rid of the border all around the website*/
+    margin:0; /*VERY IMPORTANT! This gets rid of the border all around the website*/
 }
 
 .profile > p,
@@ -848,13 +848,13 @@ footer > h4 {
 
 #lola {
     width: 18em;
-    top: -9em;
+    top: 2em;
     left: 95em;
 }
 
 #swing_cat {
     width: 14em;
-    top: -15em;
+    top: -5em;
     left: 15em;
     animation-name: swing;
     animation-duration: 5000ms;
@@ -875,4 +875,29 @@ footer > h4 {
     100% {
         transform:rotate(50deg);
     }
+}
+/****************************************************************/
+/*Projects*/
+.center-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 10em;
+}
+
+.whatsthis-heading-alt {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: antiqua, monospace;
+    font-weight: 600;
+    font-size: 5rem;
+}
+
+.project-main {
+    min-height: 25vw;
 }
