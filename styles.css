@@ -511,7 +511,7 @@ header {
 }
 
 #chs {
-    top: 118em;
+    top: 125em;
     left: 23em;
     width: 7em;
     transform: rotateZ(-10deg);
@@ -529,7 +529,7 @@ header {
 }
 
 #eat_me {
-    top: 125em;
+    top: 135em;
     left: 93em;
     width: 7em;
 }
@@ -616,6 +616,22 @@ p {
     cursor: default;
 }
 
+.syl-f {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 15rem; /*Use this to control the size here. Set the width to a realistic size so the image itself doesn't splill past the screen on mobile*/
+    margin: 0 auto; /*Centers the container on the page. 1st value: top+bottom margins, 2nd value: right+left*/
+}
+
+.syl-f img {
+    width: 100%; /*Fill the container's width*/
+    max-width: 100%; /*Prevents container overflow*/
+    height: 100%; /*Prevents img squishing*/
+    object-fit: cover;
+}
+
 .whatsthis-heading {
     text-align: center;
     font-family: antiqua, monospace;
@@ -671,7 +687,7 @@ p {
 }
 
 .scroll {
-    animation: scroll 15000ms linear infinite;
+    animation: scroll 19000ms linear infinite;
 }
 
 .mr-rogers {
